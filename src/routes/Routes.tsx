@@ -6,6 +6,11 @@ import Products from '../pages/Products'
 import ProductDetail from '../pages/ProductDetail'
 import PageNotFound from '../pages/PageNotFound'
 
+//Protected Routes
+import AdminRoutes from './AdminRoutes'
+import BuyRoutes from './BuyRoutes'
+import OrderRoutes from './OrderRoutes'
+
 interface Props {
 
 }
@@ -21,6 +26,17 @@ const Routes: React.FC<Props> = () => {
             <Route path='/products/:id'>
                 <ProductDetail/>
             </Route>
+            
+            <Route path='/admin'>
+                <AdminRoutes/>
+            </Route>
+            <Route path='/buy'>
+                <BuyRoutes/>
+            </Route>
+            <Route path='/orders'>
+                <OrderRoutes/>
+            </Route>
+
             <Route path='*'>
                 <PageNotFound/>
             </Route>
