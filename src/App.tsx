@@ -1,10 +1,14 @@
 import React from 'react';
-import './App.css';
+import {BrowserRouter} from 'react-router-dom'
+
+import Routes from './routes/Routes'
 
 function App() {
   return (
     <div className="App">
-      Awesome Shop
+     <BrowserRouter>
+        <Routes />
+     </BrowserRouter>
     </div>
   );
 }

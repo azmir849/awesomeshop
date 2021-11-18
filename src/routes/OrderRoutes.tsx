@@ -11,11 +11,11 @@ interface Props {
 
 const OrderRoutes: React.FC<Props> = () => {
         return <Switch>
+             <Route path='/orders/my-orders/:id'>
+                <OrderDetail/>
+            </Route>
             <Route path='/orders/my-orders'>
                 <Orders/>
-            </Route>
-            <Route path='/orders/my-orders/:id'>
-                <OrderDetail/>
             </Route>
             <Route path='*'>
                 <PageNotFound/>

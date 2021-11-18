@@ -17,26 +17,24 @@ interface Props {
 
 const Routes: React.FC<Props> = () => {
         return <Switch>
-            <Route path='/'>
-                <Index/>
-            </Route>
-            <Route path='/products'>
-                <Products/>
-            </Route>
-            <Route path='/products/:id'>
-                <ProductDetail/>
-            </Route>
-            
-            <Route path='/admin'>
-                <AdminRoutes/>
-            </Route>
             <Route path='/buy'>
                 <BuyRoutes/>
             </Route>
             <Route path='/orders'>
                 <OrderRoutes/>
             </Route>
-
+            <Route path='/admin'>
+                <AdminRoutes/>
+            </Route>
+            <Route path='/products/:id'>
+                <ProductDetail/>
+            </Route>
+            <Route path='/products'>
+                <Products/>
+            </Route>
+            <Route exact path='/'>
+                <Index/>
+            </Route>
             <Route path='*'>
                 <PageNotFound/>
             </Route>

@@ -17,13 +17,13 @@ const AdminRoutes: React.FC<Props> = () => {
             <Route path='/admin/manage-products'>
                 <ManageProducts/>
             </Route>
+            <Route path='/admin/manage-orders/:id'>
+                <ManageOrderDetails/>
+            </Route>
             <Route path='/admin/manage-orders'>
                 <ManageOrders/>
             </Route>
-            <Route path='/admin/manage-orders/id'>
-                <ManageOrderDetails/>
-            </Route>
-            <Route path='/admin/manage-user'>
+            <Route path='/admin/manage-users'>
                 <ManageUsers/>
             </Route>
             <Route path='*'>
