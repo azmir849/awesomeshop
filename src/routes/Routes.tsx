@@ -11,12 +11,18 @@ import AdminRoutes from './AdminRoutes'
 import BuyRoutes from './BuyRoutes'
 import OrderRoutes from './OrderRoutes'
 
+//Import components
+import Navbar from '../components/Nav/Navbar'
+
 interface Props {
 
 }
 
 const Routes: React.FC<Props> = () => {
-        return <Switch>
+        return(
+            <>
+            <Navbar/>
+             <Switch>
             <Route path='/buy'>
                 <BuyRoutes/>
             </Route>
@@ -39,6 +45,8 @@ const Routes: React.FC<Props> = () => {
                 <PageNotFound/>
             </Route>
         </Switch>
+        </>
+        )
 }
 
 export default Routes
