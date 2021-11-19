@@ -11,8 +11,8 @@ import AdminRoutes from './AdminRoutes'
 import BuyRoutes from './BuyRoutes'
 import OrderRoutes from './OrderRoutes'
 
-//Import components
-import Navbar from '../components/Nav/Navbar'
+//Import Layout
+import Layout from '../Layout'
 
 interface Props {
 
@@ -21,7 +21,7 @@ interface Props {
 const Routes: React.FC<Props> = () => {
         return(
             <>
-            <Navbar/>
+            <Layout/>
              <Switch>
             <Route path='/buy'>
                 <BuyRoutes/>
