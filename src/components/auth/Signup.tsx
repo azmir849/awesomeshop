@@ -1,5 +1,8 @@
 import React from 'react'
 
+//Import custom button
+import Button from '../Button'
+
 interface Props {
 
 }
@@ -35,6 +38,8 @@ const Signup: React.FC<Props> = () => {
                     </label>
                     <input type="password" name="password" className="input" placeholder="Your Password" />
                 </div>
+
+                <Button width='100%' style={{margin: '0.5rem 0'}}>Submit</Button>
             </form>
         </div>
         </>
