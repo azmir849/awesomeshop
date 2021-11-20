@@ -12,6 +12,10 @@ import PageNotFound from '../pages/PageNotFound'
  //Import custom button
  import Button from '../components/Button'
 
+ //Import fontawesome icon
+ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+
+
 interface Props {
 
 }
@@ -53,11 +57,15 @@ const ProductDetail: React.FC<Props> = () => {
                                 <p className="paragraph">Availability: <span className='paragraph--success'>In stock</span></p>
                         </div>
                         <div className="product-detail__sub-section quantity-control"> 
-                                <div className="qty-action">-</div>
+                                <div className="qty-action">
+                                     <FontAwesomeIcon icon={['fas','minus']} size='xs' color='gray' />   
+                                </div>
                                 <div className="qty-action qty-action--qty">
                                         <p className="paragraph">1</p>
                                 </div>
-                                <div className="qty-action">+</div>
+                                <div className="qty-action">
+                                <FontAwesomeIcon icon={['fas','plus']} size='xs' color='gray' />
+                                </div>
                         </div>
                         <Button>Add to cart</Button>
                 </div>
