@@ -1,16 +1,64 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 
 //import custom Hook
 import {useParams} from 'react-router-dom'
+
+//Import products from data
+import {products,Product} from '../data/products'
+
+//Import PageNotFound
+import PageNotFound from '../pages/PageNotFound'
 
 interface Props {
 
 }
 
 const ProductDetail: React.FC<Props> = () => {
-        const params = useParams();
-        console.log(params)
-        return <div>ProductDetail</div>
+        const params = useParams() as {productId: string};
+       
+        const[product,setProduct] = useState<Product | undefined>()
+
+         //checking productId
+         console.log(params)
+
+        useEffect(()=>{
+             const prod = products.find(item=> item.id === params.productId)
+
+             if(prod) setProduct(prod)
+             else setProduct(undefined)
+
+        },[params])
+
+        //Check product
+        console.log(product)
+
+        if(!product) return <PageNotFound/>
+
+        return <div className="page--product-detail">
+                <div className="product-detail__section">
+                     <img src={product.imageUrl} alt={product.title} className="product-image" />   
+                </div>
+                <div className="product-detail__section">
+                        <div className="product-detail__sub-section">
+                                <h3 className="header">{product.title}</h3>
+                                <p className="paragraph">{product.description}</p>
+                        </div>
+                        <div className="product-detail__sub-section">
+                                <p className="paragraph">Price: <span className='paragraph--orange'>${product.price.toFixed(2)}</span></p>
+                        </div>
+                        <div className="product-detail__sub-section product-detail__sub-section--stock ">
+                                <p className="paragraph">Availability: <span className='paragraph--success'>In stock</span></p>
+                        </div>
+                        <div className="product-detail__sub-section quantity-control"> 
+                                <div className="qty-action">-</div>
+                                <div className="qty-action qty-action--qty">
+                                        <p className="paragraph">1</p>
+                                </div>
+                                <div className="qty-action">+</div>
+                        </div>
+                        <button>Add to cart</button>
+                </div>
+        </div>
 }
 
 export default ProductDetail
