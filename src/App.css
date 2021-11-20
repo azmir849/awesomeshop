@@ -764,15 +764,15 @@
 .products {
   /* background-color: green; */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 6rem;
-  row-gap: 4rem;
+  grid-template-columns: 0.5fr 0.5fr 0.5fr;
+  /* column-gap: 0.5rem; */
+  row-gap: 5rem;
   /* padding: 2rem 0; */
 }
 
 .product {
-  width: 100%;
-  margin: 0;
+  width: 80%;
+  margin-left: 40px;
   padding: 1rem;
   cursor: pointer;
   border: 1px solid rgb(40, 44, 52, 0.3);
