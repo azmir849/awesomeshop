@@ -1,6 +1,9 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
+//Import custom button
+import Button from '../Button'
+
 interface Props {
 
 }
@@ -8,15 +11,26 @@ interface Props {
 const Navbar: React.FC<Props> = () => {
         return <header className="head">
             <div className="head__section">
-                <NavLink to='/' className="list-link">Home</NavLink>
-                <NavLink to='/products' className="list-link">Products</NavLink>
-                <NavLink to='/buy/my-cart' className="list-link">Cart</NavLink>
-                <NavLink to='/buy/select-address' className="list-link">Select Address</NavLink>
-                <NavLink to='/buy/checkout' className="list-link">Checkout</NavLink>
-                <NavLink to='/orders/my-orders' className="list-link">Orders</NavLink>
-                <NavLink to='/admin/manage-products' className="list-link">Manage Products</NavLink>
-                <NavLink to='/admin/manage-orders' className="list-link">Manage Order</NavLink>
-                <NavLink to='/admin/manage-users' className="list-link">Manage Users</NavLink>
+               <div className="head__logo">
+                   <NavLink to='/' >
+                       <h2 className="header header--logo">AwesomeShop</h2>
+                   </NavLink>
+               </div>
+               <div className="head__search">
+                   <div className="search-input">
+                       <input type="text" className="search" placeholder='Search' />
+                   </div>
+                   <Button className='btn--search'>SEARCH</Button>
+               </div>
+               <nav className="head__navbar">
+                   <ul className="navbar">
+                       <div className="navbar__lists"></div>
+                       <div className="navbar__profile">
+                           <Button className='btn--sign'>Sign In</Button>
+                           <Button className='btn--sign'>Sign Up</Button>
+                       </div>
+                   </ul>
+               </nav>
 
             </div>
 
