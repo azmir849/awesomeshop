@@ -3,6 +3,9 @@ import React from 'react'
 //Import custom button
 import Button from '../Button'
 
+//Import custom Input with error hamndler
+import Input from '../Input'
+
 //Import react hook form
 import {useForm} from 'react-hook-form'
 
@@ -34,39 +37,61 @@ const Signup: React.FC<Props> = () => {
           </h3>
 
             <form className="form" onSubmit={handleSignup}>
-                <div className="form__input-container">
-                    <label htmlFor="username" className="form__input-label">
-                        Username
-                    </label>
-                    <input type="text" name="username" className="input" placeholder="Your Username" ref={register({  
-                        required: 'Username is required',
-                        minLength: {
-                            value: 3,
-                            message: 'Username must be at least 3 characters'
-                        },
-                        maxLength: {
-                            value: 20,
-                            message: 'Username must not be greater than 20 characters'
-                        },
+                <Input 
+                label='Username'
+                name="username"
+                placeholder='Your Username' 
+                error={errors.username?.message}
+                ref={register({  
+                    required: 'Username is required',
+                    minLength: {
+                        value: 3,
+                        message: 'Username must be at least 3 characters'
+                    },
+                    maxLength: {
+                        value: 20,
+                        message: 'Username must not be greater than 20 characters'
+                    },
 
                     }
-                    )} />
-                {errors.username?.message && (<p className='paragraph paragraph--error-small'>
-                        {errors.username.message}
-                </p>) }
-                </div>
-                <div className="form__input-container">
-                <label htmlFor="email" className="form__input-label">
-                        Email
-                    </label>
-                    <input type="email" name="email" className="input" placeholder="Your Email" />
-                </div>
-                <div className="form__input-container">
-                <label htmlFor="password" className="form__input-label">
-                        Password
-                    </label>
-                    <input type="password" name="password" className="input" placeholder="Your Password" />
-                </div>
+                )}
+                />
+
+            <Input 
+                label='Email'
+                name="email"
+                placeholder='Your Email' 
+                error={errors.email?.message}
+                ref={register({  
+                    required: 'Email is required',
+                    pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Your email is in wrong format'
+                    }
+
+                    }
+                )}
+                />
+            <Input 
+                label='Password'
+                name="password"
+                type='password'
+                placeholder='Your Password' 
+                error={errors.password?.message}
+                ref={register({  
+                    required: 'Password is required',
+                    minLength: {
+                        value: 6,
+                        message: 'Password must be at least 6 characters'
+                    },
+                    maxLength: {
+                        value: 50,
+                        message: 'Password must not be greater than 50 characters'
+                    },
+
+                    }
+                )}
+                />
 
                 <Button width='100%' style={{margin: '0.5rem 0'}}>Submit</Button>
             </form>
