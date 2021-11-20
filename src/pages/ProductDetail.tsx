@@ -9,6 +9,9 @@ import {products,Product} from '../data/products'
 //Import PageNotFound
 import PageNotFound from '../pages/PageNotFound'
 
+ //Import custom button
+ import Button from '../components/Button'
+
 interface Props {
 
 }
@@ -56,7 +59,7 @@ const ProductDetail: React.FC<Props> = () => {
                                 </div>
                                 <div className="qty-action">+</div>
                         </div>
-                        <button>Add to cart</button>
+                        <Button>Add to cart</Button>
                 </div>
         </div>
 }
