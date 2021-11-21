@@ -8,21 +8,22 @@ import Input from '../Input'
 
 //Import react hook form
 import {useForm} from 'react-hook-form'
+import { SignupData } from '../../types/index'
+
+//Import custom hooks
+import{useAuthenticate} from '../hooks/index'
 
 interface Props {
 
 }
 
 const Signup: React.FC<Props> = () => {
-
-        const{register,errors, handleSubmit} = useForm<{
-            username: string,
-            email : string,
-            password: string
-        }>()
+        const {signup,loading,error} = useAuthenticate()
+        const{register,errors, handleSubmit} = useForm<SignupData>()
 
         const handleSignup = handleSubmit((data)=>{
             console.log(data)
+            signup(data)
         })
 
         return <>
@@ -93,8 +94,10 @@ const Signup: React.FC<Props> = () => {
                 )}
                 />
 
-                <Button width='100%' style={{margin: '0.5rem 0'}}>Submit</Button>
+                <Button loading={loading} width='100%' style={{margin: '0.5rem 0'}}>Submit</Button>
             </form>
+
+            {error && <p className='paragraph paragraph--error'>{error}</p>}
         </div>
         </>
 }
