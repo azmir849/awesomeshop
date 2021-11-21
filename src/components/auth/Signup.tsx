@@ -33,7 +33,7 @@ const Signup: React.FC<Props> = () => {
 
 
           <h3 className="header--center paragraph--orange">
-              Sign up to aswesomeshop
+              Sign up to Aswesomeshop
           </h3>
 
             <form className="form" onSubmit={handleSignup}>
