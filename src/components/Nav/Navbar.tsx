@@ -51,7 +51,7 @@ const Navbar: React.FC<Props> = () => {
                             <Button className='btn--sign'>Sign In</Button>
                            <Button className='btn--sign' onClick={()=> setModalType('signup')}  >Sign Up</Button>
                            </>:<div className='profile'>
-                               
+                               <FontAwesomeIcon icon={['fas','user-circle']} color='white' size='2x' />
                            </div>
                            
                            }
