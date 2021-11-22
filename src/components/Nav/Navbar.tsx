@@ -16,10 +16,8 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = () => {
-   const {authState} = useAuthContext()
+   const {authState: {authUser}} = useAuthContext()
    const {setModalType} = useModalContext()
-
-   console.log('Auth state -->',authState)
 
         return <header className="head">
             <div className="head__section">
@@ -36,7 +34,7 @@ const Navbar: React.FC<Props> = () => {
                </div>
                <nav className="head__navbar">
                    <ul className="navbar">
-                       <div className="navbar__lists"></div>
+                       {authUser && <div className="navbar__lists"></div>}
                        <div className="navbar__profile">
                            <Button className='btn--sign'>Sign In</Button>
                            <Button className='btn--sign' onClick={()=> setModalType('signup')}>Sign Up</Button>
