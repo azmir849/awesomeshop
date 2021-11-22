@@ -10,6 +10,10 @@ import {useModalContext} from '../../state/modal-context'
 //Import auth context hook from state
 import {useAuthContext} from '../../state/auth-context'
 
+//Import fonawesome
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+
 
 interface Props {
 
@@ -37,13 +41,20 @@ const Navbar: React.FC<Props> = () => {
                        {authUser && <div className="navbar__lists">
                            <li className="list list--cart">
                                <NavLink to='/buy/my-cart'>
-                                   
+                                   <FontAwesomeIcon icon={['fas','cart-arrow-down']} color='white' size='lg' />
                                </NavLink>
+                               <div className="cart-qty">0</div>
                            </li>
                         </div>}
                        <div className="navbar__profile">
-                           <Button className='btn--sign'>Sign In</Button>
-                           <Button className='btn--sign' onClick={()=> setModalType('signup')}>Sign Up</Button>
+                           {!authUser ? <>
+                            <Button className='btn--sign'>Sign In</Button>
+                           <Button className='btn--sign' onClick={()=> setModalType('signup')}  >Sign Up</Button>
+                           </>:<div className='profile'>
+                               
+                           </div>
+                           
+                           }
                        </div>
                    </ul>
                </nav>
