@@ -12,7 +12,7 @@ import {useAuthContext} from '../../state/auth-context'
 
 //Import fonawesome
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
+
 
 
 interface Props {
