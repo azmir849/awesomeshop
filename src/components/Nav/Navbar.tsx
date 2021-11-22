@@ -4,11 +4,16 @@ import {NavLink} from 'react-router-dom'
 //Import custom button
 import Button from '../Button'
 
+//Import modal context from state
+import {useModalContext} from '../../state/modal-context'
+
+
 interface Props {
 
 }
 
 const Navbar: React.FC<Props> = () => {
+   const {setModalType} = useModalContext()
         return <header className="head">
             <div className="head__section">
                <div className="head__logo">
@@ -27,7 +32,7 @@ const Navbar: React.FC<Props> = () => {
                        <div className="navbar__lists"></div>
                        <div className="navbar__profile">
                            <Button className='btn--sign'>Sign In</Button>
-                           <Button className='btn--sign'>Sign Up</Button>
+                           <Button className='btn--sign' onClick={()=> setModalType('signup')}>Sign Up</Button>
                        </div>
                    </ul>
                </nav>

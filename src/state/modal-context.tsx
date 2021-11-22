@@ -1,4 +1,4 @@
-import React,{createContext, Dispatch, ReactElement, SetStateAction, useEffect, useState} from 'react'
+import React,{createContext, Dispatch, ReactElement, SetStateAction, useEffect, useState,useContext} from 'react'
 import Signup from '../components/auth/Signup'
 
 interface Props {
@@ -16,7 +16,7 @@ type Modals = {
     [key in ModalType]: ReactElement | null
 }
 
-const ModalContext =  createContext<ModalState | undefined>(undefined)
+export const ModalContext =  createContext<ModalState | undefined>(undefined)
 
 const modals: Modals = {
     close: null,
@@ -37,3 +37,11 @@ const ModalContextProvider: React.FC<Props> = ({children}) => {
 }
 
 export default ModalContextProvider
+
+export const useModalContext = () => {
+    const context = useContext(ModalContext)
+
+    if(context === undefined) throw new Error('useModalContext must  be used within the ModalContextProvider')
+
+    return context
+}

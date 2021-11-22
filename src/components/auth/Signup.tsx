@@ -6,6 +6,9 @@ import Button from '../Button'
 //Import custom Input with error hamndler
 import Input from '../Input'
 
+//Import custom hook from state/modal-context
+import {useModalContext} from '../../state/modal-context'
+
 //Import react hook form
 import {useForm} from 'react-hook-form'
 import { SignupData } from '../../types/index'
@@ -18,19 +21,23 @@ interface Props {
 }
 
 const Signup: React.FC<Props> = () => {
+        const {setModalType} = useModalContext()
         const {signup,loading,error} = useAuthenticate()
         const{register,errors, handleSubmit} = useForm<SignupData>()
 
         const handleSignup = handleSubmit((data)=>{
             console.log(data)
             signup(data)
+            // window.alert('Submitted successfully')
+            setModalType('close')
         })
 
+       
         return <>
-        <div className="backdrop"></div>
+        <div className="backdrop"  ></div>
 
         <div className="modal modal--auth-form">
-            <div className="modal-close">&times;</div>
+            <div className="modal-close" onClick={()=> setModalType('close') } >&times;</div>
 
 
           <h3 className="header--center paragraph--orange">
