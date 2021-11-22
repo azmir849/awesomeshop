@@ -34,7 +34,13 @@ const Navbar: React.FC<Props> = () => {
                </div>
                <nav className="head__navbar">
                    <ul className="navbar">
-                       {authUser && <div className="navbar__lists"></div>}
+                       {authUser && <div className="navbar__lists">
+                           <li className="list list--cart">
+                               <NavLink to='/buy/my-cart'>
+                                   
+                               </NavLink>
+                           </li>
+                        </div>}
                        <div className="navbar__profile">
                            <Button className='btn--sign'>Sign In</Button>
                            <Button className='btn--sign' onClick={()=> setModalType('signup')}>Sign Up</Button>
