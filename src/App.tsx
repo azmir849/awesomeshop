@@ -10,13 +10,19 @@ import './fontawesome/index'
 //Import modalContextProvider from state
 import ModalContextProvider from './state/modal-context';
 
+//Import AuthContextProvider from state
+
+import AuthContextProvider from './state/auth-context';
+
 function App() {
   return (
+     <AuthContextProvider>
       <ModalContextProvider>
      <BrowserRouter>
         <Routes />
      </BrowserRouter>
      </ModalContextProvider>
+     </AuthContextProvider>
   );
 }
 

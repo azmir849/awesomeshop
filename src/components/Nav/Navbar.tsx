@@ -4,8 +4,11 @@ import {NavLink} from 'react-router-dom'
 //Import custom button
 import Button from '../Button'
 
-//Import modal context from state
+//Import modal context hook from state
 import {useModalContext} from '../../state/modal-context'
+
+//Import auth context hook from state
+import {useAuthContext} from '../../state/auth-context'
 
 
 interface Props {
@@ -13,7 +16,11 @@ interface Props {
 }
 
 const Navbar: React.FC<Props> = () => {
+   const {authState} = useAuthContext()
    const {setModalType} = useModalContext()
+
+   console.log('Auth state -->',authState)
+
         return <header className="head">
             <div className="head__section">
                <div className="head__logo">
