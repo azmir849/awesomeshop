@@ -12,7 +12,6 @@ interface Props {
 
 const LoggedInNav: React.FC<Props> = () => {
         return (
-            <nav className="head__navbar">
             <ul className="navbar">
                 <div className="navbar__lists">
                     <li className="list list--cart">
@@ -29,7 +28,6 @@ const LoggedInNav: React.FC<Props> = () => {
                     </div>
                 </div>
             </ul>
-        </nav>
 
         )
               

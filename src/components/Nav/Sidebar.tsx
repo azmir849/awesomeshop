@@ -15,8 +15,7 @@ interface Props {
 
 const Sidebar: React.FC<Props> = () => {
     const {authState: {authUser}} = useAuthContext()
-
-
+    
         return <div className="page page--sidebar">
             <div className="backdrop">
                 <div className="sidebar sidebar-show">
