@@ -11,11 +11,13 @@ interface Props {
 }
 
 type FETCH_AUTH_USER = {type: 'FETCH_AUTH_USER'; payload: AuthUser | null}
+type OPEN_USER_DROPDOWN = {type: 'OPEN_USER_DROPDOWN'; payload: boolean}
 
-type AuthActions = FETCH_AUTH_USER
+type AuthActions = FETCH_AUTH_USER | OPEN_USER_DROPDOWN
 
 type AuthState = {
         authUser: AuthUser  | null
+        isUserDropDownOpen: boolean
 }
 
 
@@ -26,9 +28,14 @@ const AuthStateContext =  createContext<AuthState | undefined>(undefined)
 const AuthDispatchContext = createContext<AuthDispatch | undefined>(undefined)
 
 // Action creators
-const fetchAuthUser = (user: AuthUser | null):FETCH_AUTH_USER=>({
+export const fetchAuthUser = (user: AuthUser | null):FETCH_AUTH_USER=>({
         type: 'FETCH_AUTH_USER',
         payload: user
+})
+
+export const openUserDropDown = (open: boolean): OPEN_USER_DROPDOWN =>({
+      type: 'OPEN_USER_DROPDOWN',
+      payload: open  
 })
 
 
@@ -41,13 +48,20 @@ const  authReducer = (state: AuthState,action: AuthActions): AuthState =>{
                             authUser: action.payload   
                         }
         
-                default:
-                        return state
+                case 'OPEN_USER_DROPDOWN':
+                        return {
+                                ...state,
+                                isUserDropDownOpen: action.payload   
+                                }
+                
+                        default:
+                                return state        
         }
 }
 
 const initialState : AuthState = {
-        authUser: null
+        authUser: null,
+        isUserDropDownOpen: false
 }
 
 const AuthContextProvider: React.FC<Props> = ({children}) => {
