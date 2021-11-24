@@ -19,7 +19,7 @@ interface Props {
 
 }
 
-const Navbar: React.FC<Props> = () => {
+const MainNav: React.FC<Props> = () => {
    const {authState: {authUser}} = useAuthContext()
    const {setModalType} = useModalContext()
 
@@ -64,4 +64,4 @@ const Navbar: React.FC<Props> = () => {
         </header>
 }
 
-export default Navbar
+export default MainNav
