@@ -6,6 +6,8 @@ import Button from '../Button'
 //Import auth-context api
 import {useAuthContext,openUserDropDown} from '../../state/auth-context'
 
+import {useAuthenticate} from '../hooks/useAuthenticate'
+
 //Import DropDowns
 import ClientDropDown from './ClientDropDown'
 import AdminDropDown from './AdminDropDown'
@@ -16,6 +18,7 @@ interface Props {
 
 const UserDropDown: React.FC<Props> = () => {
     const {authState: {authUser},authDispatch } = useAuthContext()
+    const {signout} = useAuthenticate()
     
         return <div className="page page--sidebar">
                 <div className="sidebar sidebar-show" onMouseLeave={() => authDispatch(openUserDropDown(false))}>
@@ -38,7 +41,7 @@ const UserDropDown: React.FC<Props> = () => {
 
                     {/* Logout */}
                     <div className="sidebar__section">
-                        <Button className='btn--sidebar-signout'>Sign out</Button>
+                        <Button className='btn--sidebar-signout' onClick={() => signout()} >Sign out</Button>
                     </div>
 
                     {/* Close Sidebar */}

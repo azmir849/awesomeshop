@@ -1,3 +1,6 @@
+//Import auth context api
+import {useAuthContext, openUserDropDown} from '../../state/auth-context'
+
 import {useAsyncCall} from './useAsyncCall'
 import { SignupData } from "../../types"
 
@@ -5,8 +8,9 @@ import { SignupData } from "../../types"
 import { auth } from '../../firebase/config'
 
 export const useAuthenticate = () => {
-   const {loading,setLoading,error,setError} =  useAsyncCall()
-    const signup = async (data: SignupData)=>{
+        const {authState:{isUserDropDownOpen},authDispatch} =   useAuthContext()
+        const {loading,setLoading,error,setError} =  useAsyncCall()
+        const signup = async (data: SignupData)=>{
         const {username, email, password} = data
         
         try {
@@ -30,6 +34,12 @@ export const useAuthenticate = () => {
 
     }
 
-    return {signup,loading,error}
+    const signout = () => {
+        auth.signOut().then(() => {
+                if(isUserDropDownOpen) authDispatch(openUserDropDown(false))
+        }).catch(err => alert('Sorry!, Something went wrong'))
+    }
+
+    return {signup,signout,loading,error}
 
 }
