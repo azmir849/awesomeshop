@@ -1,13 +1,14 @@
 import React from 'react'
 
-//Import Navlink
-import {NavLink} from 'react-router-dom'
-
 //Import custom button
 import Button from '../Button'
 
 //Import auth-context api
 import {useAuthContext} from '../../state/auth-context'
+
+//Import DropDowns
+import ClientDropDown from './ClientDropDown'
+import AdminDropDown from './AdminDropDown'
 
 interface Props {
 
@@ -27,27 +28,14 @@ const UserDropDown: React.FC<Props> = () => {
                             {authUser?.email}
                         </h3>
                     </div>
+
+
                     {/* Client user */}
-                    <div className="sidebar__section sidebar__section--nav">
-                        <li className="list">
-                            <NavLink to='/products' className='list-link' >
-                                PRODUCTS
-                            </NavLink>
-                        </li>
-                        <li className="list">
-                            <NavLink to='/buy/my-cart' className='list-link' >
-                               MY CART
-                            </NavLink>
-                        </li>
-                        <li className="list">
-                            <NavLink to='/orders/my-orders' className='list-link' >
-                                MY ORDERS
-                            </NavLink>
-                        </li>
-                    </div>
+                    <ClientDropDown/>
+
+
                     {/* Admin users */}
-                    {/* <div className="sidebar__section"></div>
-                    <div className="sidebar__section"></div> */}
+                   <AdminDropDown/>
 
                     {/* Logout */}
                     <div className="sidebar__section">
