@@ -40,6 +40,27 @@ export const useAuthenticate = () => {
         }).catch(err => alert('Sorry!, Something went wrong'))
     }
 
-    return {signup,signout,loading,error}
+    const signin = async (data: Omit<SignupData, 'username'>) => {
+        const{email,password} = data
+        try {
+        const response =  await auth.signInWithEmailAndPassword(email,password)
+
+        if(!response) {
+            setError('Sorry, Something went wrong')
+            setLoading(false)
+            return
+        }
+
+        return response
+        } catch (err) {
+            const {message} = err as {message: string}
+
+            setError(message)
+            setLoading(false)
+        }
+    }
+
+
+    return {signup,signin, signout,loading,error}
 
 }

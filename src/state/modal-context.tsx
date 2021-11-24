@@ -1,5 +1,6 @@
 import React,{createContext, Dispatch, ReactElement, SetStateAction, useEffect, useState,useContext} from 'react'
 import Signup from '../components/auth/Signup'
+import Signin from '../components/auth/Signin'
 
 interface Props {
 
@@ -21,7 +22,7 @@ export const ModalContext =  createContext<ModalState | undefined>(undefined)
 const modals: Modals = {
     close: null,
     signup: <Signup />,
-    signin: null,
+    signin: <Signin/>,
     reset_password: null
 }
 
