@@ -13,7 +13,7 @@ interface Props {
 
 }
 
-const Sidebar: React.FC<Props> = () => {
+const UserDropDown: React.FC<Props> = () => {
     const {authState: {authUser}} = useAuthContext()
     
         return <div className="page page--sidebar">
@@ -63,4 +63,4 @@ const Sidebar: React.FC<Props> = () => {
         </div>
 }
 
-export default Sidebar
+export default UserDropDown
