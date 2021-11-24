@@ -21,10 +21,10 @@ const Sidebar: React.FC<Props> = () => {
             <div className="backdrop">
                 <div className="sidebar sidebar-show">
                     <div className="sidebar__section sidebar__section-profile">
-                        <h3 className="header--center header--profile">
+                        <h3 className="header--center header--sidebar">
                             {authUser?.displayName}
                         </h3>
-                        <h3 className="header--center header--profile">
+                        <h3 className="header--center header--sidebar">
                             {authUser?.email}
                         </h3>
                     </div>
@@ -57,7 +57,7 @@ const Sidebar: React.FC<Props> = () => {
 
                     {/* Close Sidebar */}
                     <div className="sidebar__section">
-                        <Button className='side__close'>&times;</Button>
+                        <Button className='sidebar__close'>&times;</Button>
                     </div>
                 </div>
             </div>
