@@ -20,7 +20,7 @@ const Sidebar: React.FC<Props> = () => {
         return <div className="page page--sidebar">
             <div className="backdrop">
                 <div className="sidebar sidebar-show">
-                    <div className="sidebar__section sidebar__section-profile">
+                    <div className="sidebar__section sidebar__section--profile">
                         <h3 className="header--center header--sidebar">
                             {authUser?.displayName}
                         </h3>
