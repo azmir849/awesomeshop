@@ -50,7 +50,6 @@ const ResetPassword: React.FC<Props> = () => {
 
             <form className="form" onSubmit={handleResetPassword}>
                 <Input
-                    label='Email'
                     name="email"
                     placeholder='Your Email'
                     error={errors.email?.message}
