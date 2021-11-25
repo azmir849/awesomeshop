@@ -56,10 +56,10 @@ const Signin: React.FC<Props> = () => {
                 error={errors.email?.message}
                 ref={register({  
                     required: 'Email is required',
-                    pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Your email is in wrong format'
-                    }
+                    // pattern: {
+                    //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    //     message: 'Your email is in wrong format'
+                    // }
 
                     }
                 )}
