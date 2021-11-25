@@ -9,7 +9,7 @@ import { auth } from '../../firebase/config'
 
 export const useAuthenticate = () => {
         const {authState:{isUserDropDownOpen},authDispatch} =   useAuthContext()
-        const {loading,setLoading,error,setError} =  useAsyncCall()
+        const {loading, setLoading, error, setError, successMsg, setSuccessMsg} =  useAsyncCall()
         const signup = async (data: SignupData)=>{
         const {username, email, password} = data
         
@@ -60,7 +60,21 @@ export const useAuthenticate = () => {
         }
     }
 
+    const resetPassword = (data: Omit<SignupData, 'username' | 'password'>) => {
+        setLoading(true)
 
-    return {signup,signin, signout,loading,error}
+        auth.sendPasswordResetEmail(data.email).then(() => {
+            setSuccessMsg('Please check your mail to reset your password')
+            setLoading(false)
+
+        }).catch(err =>{
+            const {message} = err as {message: string}
+
+            setError(message)
+            setLoading(false)
+        })
+    }
+
+    return {signup, signin, signout, loading, error, resetPassword, successMsg}
 
 }
