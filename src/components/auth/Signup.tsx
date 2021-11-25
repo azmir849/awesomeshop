@@ -107,14 +107,13 @@ const Signup: React.FC<Props> = () => {
             {error && <p className='paragraph paragraph--error'>{error}</p>}
 
             <p className="paragraph paragraph--focus paragraph--small">
-                Go Back to{' '}
+                Already have an account?{' '}
                 <span
                     className="paragraph--orange paragraph--link"
                     onClick={() => setModalType("signin")}
                 >
                     Sign in
                 </span>{' '}
-                page
             </p>
         </div>
     </>
