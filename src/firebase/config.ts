@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import 'firebase/auth'
 import 'firebase/firebase-auth'
+import 'firebase/functions'
 
 
 const firebaseConfig = {
@@ -24,3 +25,4 @@ firebase.initializeApp(firebaseConfig);
 
 export {firebase}
 export const auth = firebase.auth()
+export const functions = firebase.functions()
