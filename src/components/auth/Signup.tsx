@@ -42,6 +42,15 @@ const Signup: React.FC<Props> = () => {
                 Sign up to Aswesomeshop
             </h3>
 
+            {/* Social media signup  */}
+
+            <div className="social">
+                <Button className='social-btn social-btn--fb'>
+
+                </Button>
+            </div>
+
+
             <form className="form" onSubmit={handleSignup}>
                 <Input
                     label='Username'
