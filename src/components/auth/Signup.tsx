@@ -11,7 +11,7 @@ import { useModalContext } from '../../state/modal-context'
 
 //Import react hook form
 import { useForm } from 'react-hook-form'
-import { SignupData } from '../../types/index'
+import { SignupData, Provider } from '../../types/index'
 
 //Import custom hooks
 import { useAuthenticate } from '../hooks/index'
@@ -25,13 +25,21 @@ interface Props {
 
 const Signup: React.FC<Props> = () => {
     const { setModalType } = useModalContext()
-    const { signup, loading, error } = useAuthenticate()
+    const { signup, loading, error, socialLogin } = useAuthenticate()
     const { register, errors, handleSubmit } = useForm<SignupData>()
 
     const handleSignup = handleSubmit((data) => {
         // console.log(data)
         signup(data)
     })
+
+    const handleSocialLogin = async (provider: Provider) => {
+        // const response = await signup(data)
+
+        // if(response) setModalType('close')
+
+        socialLogin(provider)
+    }
 
 
     return <>
@@ -48,13 +56,23 @@ const Signup: React.FC<Props> = () => {
             {/* Social media signup  */}
 
             <div className="social">
-                <Button className='social-btn social-btn--fb' width='100%' height='3rem'>
+                <Button
+                    className='social-btn social-btn--fb'
+                    width='100%'
+                    height='3rem'
+                    onClick={() => handleSocialLogin('facebook')}
+                >
                     <FontAwesomeIcon icon={['fab', 'facebook-f']} size='1x' />
                     <span>Login with Facebook</span>
                 </Button>
             </div>
             <div className="social">
-                <Button className='social-btn social-btn--google' width='100%' height='3rem'>
+                <Button
+                    className='social-btn social-btn--google'
+                    width='100%'
+                    height='3rem'
+                    onClick={() => handleSocialLogin('google')}
+                >
                     <FontAwesomeIcon icon={['fab', 'google']} size='1x' />
                     <span>Login with Google</span>
                 </Button>

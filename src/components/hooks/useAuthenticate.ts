@@ -98,12 +98,18 @@ export const useAuthenticate = () => {
 
            //Call onSignup functions to create a new user in firestore
            const onSignup = functions.httpsCallable('onSignup')
+           const data = await onSignup({ username: response.user?.displayName})
+           
+           setLoading(false)
+           return data
 
-        } catch (error) {
-            
+        } catch (err) {
+            const { message } = err as { message: string }
+            setError(message)
+            setLoading(false)
         }
     }
 
-    return {signup, signin, signout, loading, error, resetPassword, successMsg}
+    return {signup, signin, signout, loading, error, resetPassword, successMsg,socialLogin}
 
 }
