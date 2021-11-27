@@ -26,10 +26,8 @@ const Signup: React.FC<Props> = () => {
     const { register, errors, handleSubmit } = useForm<SignupData>()
 
     const handleSignup = handleSubmit((data) => {
-        console.log(data)
+        // console.log(data)
         signup(data)
-        // window.alert('Submitted successfully')
-        setModalType('close')
     })
 
 
@@ -103,9 +101,7 @@ const Signup: React.FC<Props> = () => {
 
                 <Button loading={loading} width='100%' style={{ margin: '0.5rem 0' }}>Submit</Button>
             </form>
-
             {error && <p className='paragraph paragraph--error'>{error}</p>}
-
             <p className="paragraph paragraph--focus paragraph--small">
                 Already have an account?{' '}
                 <span
