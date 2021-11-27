@@ -1,3 +1,4 @@
+import { Provider } from './../../types/index';
 //Import auth context api
 import {useAuthContext, openUserDropDown} from '../../state/auth-context'
 
@@ -5,7 +6,7 @@ import {useAsyncCall} from './useAsyncCall'
 import { SignupData } from "../../types"
 
 //Import firebase
-import { auth } from '../../firebase/config'
+import { auth,functions,firebase } from '../../firebase/config'
 
 export const useAuthenticate = () => {
         const {authState:{isUserDropDownOpen},authDispatch} =   useAuthContext()
@@ -73,6 +74,34 @@ export const useAuthenticate = () => {
             setError(message)
             setLoading(false)
         })
+    }
+
+    const socialLogin = async (provider: Provider)=>{
+        try {
+            setLoading(true)
+
+            const providerObj = provider === 'facebook' 
+            ? new firebase.auth.FacebookAuthProvider()
+            : provider === 'google' 
+            ? new firebase.auth.GithubAuthProvider() 
+            : null
+
+            if(!providerObj) return
+
+           const response =  await auth.signInWithPopup(providerObj)
+
+           if(!response){
+               setError('Sorry ,Something went wrong.')
+               setLoading(false)
+               return
+           }
+
+           //Call onSignup functions to create a new user in firestore
+           const onSignup = functions.httpsCallable('onSignup')
+
+        } catch (error) {
+            
+        }
     }
 
     return {signup, signin, signout, loading, error, resetPassword, successMsg}
