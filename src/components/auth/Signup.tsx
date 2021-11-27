@@ -45,7 +45,7 @@ const Signup: React.FC<Props> = () => {
             {/* Social media signup  */}
 
             <div className="social">
-                <Button className='social-btn social-btn--fb'>
+                <Button className='social-btn social-btn--fb' width='100%' height='3rem'>
 
                 </Button>
             </div>
