@@ -16,6 +16,9 @@ import { SignupData } from '../../types/index'
 //Import custom hooks
 import { useAuthenticate } from '../hooks/index'
 
+//Import fontAwesome Brand Icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 interface Props {
 
 }
@@ -46,9 +49,21 @@ const Signup: React.FC<Props> = () => {
 
             <div className="social">
                 <Button className='social-btn social-btn--fb' width='100%' height='3rem'>
-
+                    <FontAwesomeIcon icon={['fab', 'facebook-f']} size='1x' />
+                    <span>Login with Facebook</span>
                 </Button>
             </div>
+            <div className="social">
+                <Button className='social-btn social-btn--google' width='100%' height='3rem'>
+                    <FontAwesomeIcon icon={['fab', 'google']} size='1x' />
+                    <span>Login with Google</span>
+                </Button>
+            </div>
+
+            <hr></hr>
+            <p className="paragraph--center paragraph--focus paragraph--small">
+                Or sign up with an email
+            </p>
 
 
             <form className="form" onSubmit={handleSignup}>
